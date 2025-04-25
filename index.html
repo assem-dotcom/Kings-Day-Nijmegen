@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King's Day Nijmegen Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 King's Day Nijmegen</h1>
+        </header>
+
+        <nav class="section-nav">
+            <button class="nav-btn active" data-section="train">🚂 Train</button>
+            <button class="nav-btn" data-section="dares">🎲 Dares</button>
+            <button class="nav-btn" data-section="gallery">📸 Gallery</button>
+        </nav>
+
+        <div class="sections">
+            <!-- Train Section -->
+            <section id="train" class="section active">
+                <h2>🚂 The Train Ride Warm-Up</h2>
+                <div class="prediction-box">
+                    <h3>Predict the Madness</h3>
+                    <input type="text" id="prediction-input" placeholder="Type your wild prediction...">
+                    <button id="submit-prediction">Submit</button>
+                    <div id="predictions-list"></div>
+                </div>
+                <div class="dutch-game">
+                    <h3>Dutch or Drunk?</h3>
+                    <button id="play-audio">Play Audio</button>
+                    <div class="guess-buttons">
+                        <button class="guess-btn" data-guess="dutch">Dutch</button>
+                        <button class="guess-btn" data-guess="drunk">Drunk</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dares Section -->
+            <section id="dares" class="section">
+                <h2>🎲 The King's Day Dare Generator</h2>
+                <div class="wheel-container">
+                    <canvas id="wheel"></canvas>
+                    <button id="spin-btn">SPIN!</button>
+                </div>
+                <div class="result-container">
+                    <div id="result" class="hidden">
+                        <h3>Your Challenge:</h3>
+                        <p id="challenge-text"></p>
+                        <button id="next-spin" class="hidden">Next Spin</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="section">
+                <h2>📸 The Blackmail Gallery</h2>
+                <div class="gallery-container">
+                    <div class="upload-box">
+                        <input type="file" id="photo-upload" accept="image/*" multiple>
+                        <label for="photo-upload">Upload Photos</label>
+                    </div>
+                    <div id="photo-gallery" class="photo-gallery"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Emergency Mode -->
+        <div class="emergency-mode">
+            <button id="emergency-btn">🔫 Emergency Mode</button>
+            <div id="emergency-options" class="hidden">
+                <button id="find-mate">Find My Mate</button>
+                <button id="shot-roulette">Shot Roulette</button>
+                <button id="stupid-bet">Generate Stupid Bet</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

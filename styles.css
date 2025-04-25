@@ -1,0 +1,423 @@
+:root {
+    --primary-color: #FF6B00;
+    --secondary-color: #FFA500;
+    --background-color: #FFF5E6;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --green-zone: #4CAF50;
+    --orange-zone: #FF9800;
+    --red-zone: #F44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 95%;
+    padding: 2rem;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+/* Navigation */
+.section-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.nav-btn {
+    background: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    flex: 1;
+    min-width: 100px;
+}
+
+.nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Sections */
+.section {
+    display: none;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Train Section */
+.prediction-box, .dutch-game {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+}
+
+#prediction-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    margin: 1rem 0;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#prediction-input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+.prediction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: white;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.delete-prediction {
+    background: none;
+    border: none;
+    color: var(--red-zone);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: transform 0.2s;
+}
+
+.delete-prediction:hover {
+    transform: scale(1.2);
+}
+
+.guess-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.guess-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--primary-color);
+    color: white;
+}
+
+.guess-btn:hover {
+    transform: scale(1.05);
+    background: var(--secondary-color);
+}
+
+.guess-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dares Section */
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 2rem;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+#wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#spin-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    z-index: 10;
+}
+
+#spin-btn:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+#spin-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+#spin-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.result-container {
+    min-height: 150px;
+    margin-top: 2rem;
+}
+
+#result {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    animation: fadeIn 0.5s ease-in;
+}
+
+#result.hidden {
+    display: none;
+}
+
+#challenge-text {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+#next-spin {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#next-spin:hover {
+    transform: scale(1.05);
+}
+
+/* Gallery Section */
+.gallery-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.upload-box {
+    background: var(--background-color);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#photo-upload {
+    display: none;
+}
+
+.upload-box label {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.upload-box label:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: 15px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    transition: transform 0.3s;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.photo-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.delete-photo {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.photo-container:hover .delete-photo {
+    opacity: 1;
+}
+
+.delete-photo:hover {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Emergency Mode */
+.emergency-mode {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+#emergency-btn {
+    background: var(--red-zone);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+#emergency-options {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    margin-bottom: 1rem;
+}
+
+#emergency-options button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--background-color);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    .nav-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .emergency-mode {
+        bottom: 1rem;
+        right: 1rem;
+    }
+} 
